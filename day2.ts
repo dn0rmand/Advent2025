@@ -114,5 +114,6 @@ export class Day2 extends Day<TInput> {
     return sum
   }
 }
-
-new Day2().execute()
+if (!Deno.mainModule.endsWith('/main.ts')) {
+  new Day2().execute()
+}

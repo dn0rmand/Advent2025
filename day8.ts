@@ -1,9 +1,9 @@
 import { Day } from './tools/day.ts'
 
 type TInput = string[]
-export class Day0 extends Day<TInput> {
+export class Day8 extends Day<TInput> {
   constructor() {
-    super(0)
+    super(8)
   }
 
   loadInput(): TInput {
@@ -21,5 +21,5 @@ export class Day0 extends Day<TInput> {
 }
 
 if (!Deno.mainModule.endsWith('/main.ts')) {
-  new Day0().execute()
+  new Day8().execute()
 }

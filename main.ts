@@ -1,30 +1,30 @@
 import { IDay } from './tools/day.ts'
 import { Day1 } from './day1.ts'
 import { Day2 } from './day2.ts'
-// import { Day3 } from './day3.ts'
-// import { Day4 } from './day4.ts'
-// import { Day5 } from './day5.ts'
-// import { Day6 } from './day6.ts'
-// import { Day7 } from './day7.ts'
-// import { Day8 } from './day8.ts'
-// import { Day9 } from './day9.ts'
-// import { Day10 } from './day10.ts'
-// import { Day11 } from './day11.ts'
-// import { Day12 } from './day12.ts'
+import { Day3 } from './day3.ts'
+import { Day4 } from './day4.ts'
+import { Day5 } from './day5.ts'
+import { Day6 } from './day6.ts'
+import { Day7 } from './day7.ts'
+import { Day8 } from './day8.ts'
+import { Day9 } from './day9.ts'
+import { Day10 } from './day10.ts'
+import { Day11 } from './day11.ts'
+import { Day12 } from './day12.ts'
 
 const days: IDay[] = [
   new Day1(),
   new Day2(),
-  // new Day3(),
-  // new Day4(),
-  // new Day5(),
-  // new Day6(),
-  // new Day7(),
-  // new Day8(),
-  // new Day9(),
-  // new Day10(),
-  // new Day11(),
-  // new Day12(),
+  new Day3(),
+  new Day4(),
+  new Day5(),
+  new Day6(),
+  new Day7(),
+  new Day8(),
+  new Day9(),
+  new Day10(),
+  new Day11(),
+  new Day12(),
 ]
 
 type TimeEntry = {
@@ -67,7 +67,6 @@ function format(value: string | number, length: number, direction: 'L' | 'R' = '
   const s = `${value}`
   if (s.length < length) {
     return direction === 'L' ? ' '.repeat(length - s.length) + s : s + ' '.repeat(length - s.length)
-    return
   } else {
     return s.substring(0, length)
   }
@@ -77,7 +76,7 @@ async function executeAll() {
   console.time('@advent-2025')
 
   output('┌─────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐')
-  output('│ 🎄 🎅🏻 🎄 🎅🏻 🎄 🎅🏻 🎄 🎅🏻 🎄 🎅🏻 🎄 🎅🏻 🎄 🎅🏻 🎄  ADVENT OF CODE 2025  🎄 🎅🏻 🎄 🎅🏻 🎄 🎅🏻 🎄 🎅🏻 🎄 🎅🏻 🎄 🎅🏻 🎄 🎅🏻 🎄 │')
+  output('│ 🎄🎄🎄🎄🎄🎄🎄🎄🎄🎄🎄🎄🎄🎄🎄🎄🎄🎄🎄🎄🎄🎄🎄  ADVENT OF CODE 2025  🎄🎄🎄🎄🎄🎄🎄🎄🎄🎄🎄🎄🎄🎄🎄🎄🎄🎄🎄🎄🎄 │')
   output('├─────┬───────────────────────────┬──────────────────────┬──────────────────────────────────────────┬─────────────┤')
   output('│ Day │ Title                     │ Part 1               │ Part 2                                   │ Time in ms  │')
 

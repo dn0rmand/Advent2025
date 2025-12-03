@@ -65,4 +65,6 @@ export class Day1 extends Day<TInput> {
   }
 }
 
-new Day1().execute()
+if (!Deno.mainModule.endsWith('/main.ts')) {
+  new Day1().execute()
+}
