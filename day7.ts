@@ -74,26 +74,21 @@ export class Day7 extends Day<TMap> {
 
     let count = 0
     while (positions.length > 0) {
-      const p = positions.pop()
-      if (!p) {
-        throw 'Error'
+      let { x, y } = positions.pop()!
+      while (y < map.height) {
+        if (map.splitters[x + y * map.width]) {
+          break
+        }
+        y++
       }
-      if (p.x < 0 || p.x >= map.width || p.y < 0 || p.y >= map.height) {
-        continue
-      }
-      const k = p.x + p.y * map.width
-      if (visited[k]) {
-        continue
-      }
-      visited[k] = 1
-      if (map.splitters[k]) {
+      const key = x + y * map.width
+      if (map.splitters[key] && !visited[key]) {
+        visited[key] = 1
         count++
-        const l: TPoint = { x: p.x - 1, y: p.y }
-        const r: TPoint = { x: p.x + 1, y: p.y }
+        const l: TPoint = { x: x - 1, y }
+        const r: TPoint = { x: x + 1, y }
         positions.push(l)
         positions.push(r)
-      } else {
-        positions.push({ x: p.x, y: p.y + 1 })
       }
     }
     return count

@@ -1,5 +1,7 @@
 import { Day } from './tools/day.ts'
 
+const MAX_DISTANCE = 292000000
+
 type TPoint = {
   groupId: number
   x: number
@@ -42,12 +44,13 @@ export class Day8 extends Day<TInput> {
         const dy = pj.y - pi.y
         const dz = pj.z - pi.z
         const d = dx * dx + dy * dy + dz * dz
-
-        distances.push({
-          pt1: pj,
-          pt2: pi,
-          distance: d,
-        })
+        if (d < MAX_DISTANCE) {
+          distances.push({
+            pt1: pj,
+            pt2: pi,
+            distance: d,
+          })
+        }
       }
     }
 
