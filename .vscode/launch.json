@@ -1,28 +1,40 @@
 {
-    "version": "0.2.0",
-    "configurations": [
-        {
-            "request": "launch",
-            "name": "Advent: Current File",
-            "type": "node",
-            "program": "${file}",
-            "cwd": "${workspaceFolder}",
-            "runtimeExecutable": "/opt/homebrew/bin/deno",
-            "runtimeArgs": ["run", "--inspect-wait", "--allow-all"],
-            "args": ["animate"],
-            "attachSimplePort": 9229,
-            "console": "integratedTerminal"
-        },
-        {
-            "request": "launch",
-            "name": "iTerm: Current File",
-            "type": "node",
-            "program": "${file}",
-            "cwd": "${workspaceFolder}",
-            "runtimeExecutable": "/opt/homebrew/bin/deno",
-            "runtimeArgs": ["run", "--inspect-wait", "--allow-all"],
-            "attachSimplePort": 9229,
-            "console": "externalTerminal"
-        }
-    ]
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "request": "launch",
+      "name": "Advent: Current File",
+      "type": "node",
+      "program": "${file}",
+      "cwd": "${workspaceFolder}",
+      "runtimeExecutable": "/opt/homebrew/bin/deno",
+      "runtimeArgs": ["run", "--inspect-wait", "--allow-all"],
+      "args": ["animate"],
+      "attachSimplePort": 9229,
+      "console": "integratedTerminal"
+    },
+    {
+      "request": "launch",
+      "name": "Advent: Day 10",
+      "type": "node",
+      "program": "day10.ts",
+      "cwd": "${workspaceFolder}",
+      "runtimeExecutable": "/opt/homebrew/bin/deno",
+      "runtimeArgs": ["run", "--inspect-wait", "--allow-all"],
+      "args": ["animate"],
+      "attachSimplePort": 9229,
+      "console": "integratedTerminal"
+    },
+    {
+      "request": "launch",
+      "name": "iTerm: Current File",
+      "type": "node",
+      "program": "${file}",
+      "cwd": "${workspaceFolder}",
+      "runtimeExecutable": "/opt/homebrew/bin/deno",
+      "runtimeArgs": ["run", "--inspect-wait", "--allow-all"],
+      "attachSimplePort": 9229,
+      "console": "externalTerminal"
+    }
+  ]
 }
