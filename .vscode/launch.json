@@ -15,9 +15,9 @@
     },
     {
       "request": "launch",
-      "name": "Advent: Day 10",
+      "name": "Advent: Day 9",
       "type": "node",
-      "program": "day10.ts",
+      "program": "day9.ts",
       "cwd": "${workspaceFolder}",
       "runtimeExecutable": "/opt/homebrew/bin/deno",
       "runtimeArgs": ["run", "--inspect-wait", "--allow-all"],

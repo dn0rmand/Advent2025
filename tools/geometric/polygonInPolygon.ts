@@ -10,13 +10,22 @@ export type TLine = {
 
 export type TPolygon = TPoint[]
 
-const lineLength = (a: TPoint, b: TPoint): number => b.x - a.x + (b.y - a.y)
+const lineLength = (a: TPoint, b: TPoint): number => b.x - a.x + b.y - a.y
 
 const pointWithLine = (p: TPoint, a: TPoint, b: TPoint): boolean => (p.x - b.x) * (a.y - b.y) === (p.y - b.y) * (a.x - b.x)
 
 const pointOnLine = (point: TPoint, a: TPoint, b: TPoint): boolean => {
   const l = lineLength(a, b)
-  return pointWithLine(point, a, b) && lineLength(a, point) <= l && lineLength(b, point) <= l
+  if (!pointWithLine(point, a, b)) {
+    return false
+  }
+  if (lineLength(a, point) <= l) {
+    return false
+  }
+  if (lineLength(b, point) <= l) {
+    return false
+  }
+  return true
 }
 
 const lineIntersectsLine = (aa: TPoint, ab: TPoint, ba: TPoint, bb: TPoint): boolean => {
@@ -51,9 +60,11 @@ const lineIntersectsLine = (aa: TPoint, ab: TPoint, ba: TPoint, bb: TPoint): boo
 export class Polygon {
   pointsChecked: Map<number, boolean> = new Map()
   linesChecked: Map<bigint, boolean> = new Map()
+  xConnect: Map<number, TPoint[]> = null!
   path: TPoint[] = []
 
   constructor(points: TPoint[], xConnect: Map<number, TPoint[]>, yConnect: Map<number, TPoint[]>) {
+    this.xConnect = xConnect
     const start = points[0]
 
     let point = start
@@ -103,7 +114,11 @@ export class Polygon {
     return intersects
   }
 
-  containsPoint(point: TPoint): boolean {
+  containsPoint(point: TPoint, o: TPoint): boolean {
+    if ((this.xConnect.get(o.x) ?? []).some(p => p.y === o.y)) {
+      return true
+    }
+
     const { x, y } = point
     const key = y * 100000 + x
 
@@ -125,13 +140,14 @@ export class Polygon {
     return inside
   }
 
-  containsPolygon(polygonA: TPolygon): boolean {
+  containsPolygon(polygonA: TPolygon, outerPolygonA: TPolygon): boolean {
     let inside = true
 
     for (let i = 0, l = polygonA.length - 1; i < l; i++) {
       const a = polygonA[i]
+      const o = outerPolygonA[i]
 
-      if (!this.containsPoint(a)) {
+      if (!this.containsPoint(o, o)) {
         inside = false
         break
       }

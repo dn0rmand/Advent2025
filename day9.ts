@@ -68,6 +68,14 @@ export class Day9 extends Day<TInput> {
     const minY = Math.min(p1.y, p2.y)
     const maxY = Math.max(p1.y, p2.y)
 
+    const outerPolygon = [
+      { x: minX, y: minY },
+      { x: maxX, y: minY },
+      { x: maxX, y: maxY },
+      { x: minX, y: maxY },
+      { x: minX, y: minY },
+    ]
+
     const innerPolygon = [
       { x: minX + 1, y: minY + 1 },
       { x: maxX - 1, y: minY + 1 },
@@ -76,7 +84,7 @@ export class Day9 extends Day<TInput> {
       { x: minX + 1, y: minY + 1 },
     ]
 
-    const res = polygon.containsPolygon(innerPolygon)
+    const res = polygon.containsPolygon(innerPolygon, outerPolygon)
 
     return res
   }
